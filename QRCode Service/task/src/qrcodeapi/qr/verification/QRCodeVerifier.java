@@ -1,7 +1,6 @@
 package qrcodeapi.qr.verification;
 
 import org.springframework.stereotype.Component;
-import qrcodeapi.qr.CORRECTION_LEVEL;
 import qrcodeapi.qr.QRParams;
 import qrcodeapi.qr.services.ImageFormat;
 
@@ -25,11 +24,6 @@ public class QRCodeVerifier implements IQRCodeVerifier {
         }
         if (contentIsEmpty(qrParams.contents()))
             list.add(QRStatus.CONTENT_EMPTY);
-
-        if (qrParams.correction().equals(CORRECTION_LEVEL.NOT_SUPPORTED)) {
-            list.add(QRStatus.CORRECTION_LEVEL_NOT_SUPPORTED);
-        }
-
         if (list.isEmpty())
             return QRStatus.VALID;
         else {

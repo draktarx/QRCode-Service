@@ -39,7 +39,7 @@ public class QRCodeService implements IQRCodeService {
         QRStatus qrStatus = qrCodeVerifier.verify(qrParams);
         return switch (qrStatus) {
             case VALID -> buildQrCodeResponse(qrParams);
-            case SIZE_OUT_OF_BOUNDS, MEDIATYPE_NOT_SUPPORTED, CONTENT_EMPTY, CORRECTION_LEVEL_NOT_SUPPORTED ->
+            case SIZE_OUT_OF_BOUNDS, MEDIATYPE_NOT_SUPPORTED, CONTENT_EMPTY ->
                     buildBadRequestResponse(qrStatus);
         };
     }
